@@ -3,8 +3,8 @@ import React from 'react'
 import { Link } from 'expo-router'
 
 // Themed Components
-import { ThemedView } from '../components/ThemedView'
-import { ThemedLogo } from '../components/ThemedLogo'
+import ThemedView from '../components/ThemedView'
+import ThemedLogo from '../components/ThemedLogo'
 import Spacer from '../components/Spacer'
 import ThemedText from '../components/ThemedText'
 
@@ -20,11 +20,11 @@ const Home = () => {
       <ThemedText>Reading List App</ThemedText>
       <Spacer />
 
-      <Link href="/about" style={styles.link}>
-        <ThemedText>About Page</ThemedText>
+      <Link href="/login" style={styles.link}>
+        <ThemedText>Login Page</ThemedText>
       </Link>
-      <Link href="/contact" style={styles.link}>
-        <ThemedText>Contact Page</ThemedText>
+      <Link href="/register" style={styles.link}>
+        <ThemedText>Register Page</ThemedText>
       </Link>
 
     </ThemedView>

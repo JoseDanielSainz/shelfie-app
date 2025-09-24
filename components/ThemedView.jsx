@@ -1,16 +1,30 @@
 import { View, useColorScheme } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Colors } from '../constants/Colors'
 import React from 'react'
 
-const ThemedView = ({ style, ...props }) => {
+const ThemedView = ({ style, safe = false ,...props }) => {
   const colorScheme = useColorScheme()
   const theme = Colors[colorScheme] ?? Colors.light
 
-  return (
-    // When we have a single component inside the template, we can simply make the element tag self closing and it will automatically render its children, instead of having to write {children} prop between the open and closing tags.
-
+  if (!safe) return (  
     <View 
-      style={[{backgroundColor: theme.background}, style]}
+    style={[{backgroundColor: theme.background}, style]}
+    {...props}
+    />
+  )
+  
+  const insets = useSafeAreaInsets()
+
+  return (
+    <View 
+      style={[{
+        backgroundColor: theme.background,
+        paddingTop: insets.top,
+        paddingBottom: insets.bottom,
+      },
+      style
+      ]}
       {...props}
     />
   )
